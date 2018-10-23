@@ -1,0 +1,19 @@
+{
+  "name": "getting-started-graphql",
+  "version": "1.0.0",
+  "description": "learn-graphql",
+  "main": "index.js",
+  "repository": "https://github.com/PDVega/getting-started-graphql.git",
+  "author": "Your Name <vega@youexpress.co.id>",
+  "license": "MIT",
+  "prettier": {
+    "singleQuote": true,
+    "trailingComma": "all"
+  },
+  "dependencies": {
+    "express": "^4.16.4",
+    "express-graphql": "^0.6.12",
+    "graphql": "^14.0.2",
+    "prettier": "^1.14.3"
+  }
+}
