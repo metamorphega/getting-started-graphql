@@ -1,8 +1,12 @@
-let { graphql, buildSchema } = require('graphql');
+let express = require('express');
+let graphqlHTTP = require('express-graphql');
+// let { graphql, buildSchema } = require('graphql'); #0
+let { buildSchema } = require('graphql');
 
-let schema = buildSchema(`type Query {
-    hello: String
-}`);
+let schema = buildSchema(`
+    type Query {
+        hello: String
+    }`);
 
 let root = {
   hello: () => {
@@ -10,6 +14,20 @@ let root = {
   },
 };
 
-graphql(schema, '{hello}', root).then(response => {
-  console.log(response);
-});
+let app = express();
+app.use(
+  '/graphql',
+  graphqlHTTP({
+    schema: schema,
+    rootValue: root,
+    graphiql: true,
+  }),
+);
+
+app.listen(4000);
+console.log('Running a GraphQL API server at localhost:4000/graphql');
+
+// #0
+// graphql(schema, '{hello}', root).then(response => {
+//   console.log(response);
+// });
