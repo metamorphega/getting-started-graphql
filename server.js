@@ -15,6 +15,7 @@ let { buildSchema } = require('graphql');
 //   },
 // };
 
+// #2
 var schema = buildSchema(`
   type Query {
     quoteOfTheDay: String
@@ -35,6 +36,7 @@ var schema = buildSchema(`
 // );
 
 // The root provides a resolver function for each API endpoint
+// #2
 var root = {
   quoteOfTheDay: () => {
     return Math.random() < 0.5 ? 'Take it easy' : 'Salvation lies within';
@@ -47,6 +49,7 @@ var root = {
   },
 };
 
+// #2
 var app = express();
 app.use(
   '/graphql',
